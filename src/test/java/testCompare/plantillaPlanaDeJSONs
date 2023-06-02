@@ -1,0 +1,15 @@
+Puede conjugar con esta plantilla varias opciones
+(NO ES UN TEXTFILE PARA IMPORTAR AL TEST)
+
+{
+"Content":"ExampleFile",
+"Icon":9,
+"date":"$IGNORE",
+"elements":{
+ "key":2,
+ "value":{
+  "llavein":3,
+  "valin":"Hola"
+  }
+ }
+}
