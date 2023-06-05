@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONObject;
 
+import java.util.Iterator;
+
 public class Compare2JSON {
 
     public boolean verifyEqualJSON(String expectedJSON, String actualJSON){
@@ -32,11 +34,28 @@ public class Compare2JSON {
             strNode=mapper.readTree(String.valueOf(strJson));
             System.out.println(type+" JSON: ");
             System.out.println(strNode);
+            getKeysAndValues(strJson);
             return strNode;
         } catch (Exception e){
             System.out.println("* "+type+" JSON is not correctly formatted");
             return null;
         }
+    }
+
+    private void getKeysAndValues(JSONObject jsonob){
+        System.out.println("{");
+        Iterator<String> keys=jsonob.keys();
+        while(keys.hasNext()){
+            String key=keys.next();
+            if (jsonob.get(key) instanceof JSONObject){
+                System.out.println("Key "+key+" has a JSON: ");
+                getKeysAndValues((JSONObject) jsonob.get(key));
+            } else {
+                System.out.println("Key "+key+" has value "+jsonob.get(key));
+            }
+
+        }
+        System.out.println("}");
     }
 
 }

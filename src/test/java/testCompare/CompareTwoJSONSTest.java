@@ -825,4 +825,65 @@ public class CompareTwoJSONSTest {
         boolean actualResult=compare2JSON.verifyEqualJSON(expected,actual);
         Assertions.assertEquals(actualResult,expectedResult,"Error, los resultados no son lo mismo");
     }
+
+    //test positivo. Los dos tienen el mismo nested con otro nested
+    @Test
+    public void verifyComparer44(){
+        String expected="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":{\n" +
+                "  \"llavein\":3,\n" +
+                "  \"valin\":\"Hola\"\n" +
+                "  }\n" +
+                " }\n" +
+                "}";
+        String actual="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":{\n" +
+                "  \"llavein\":3,\n" +
+                "  \"valin\":\"Hola\"\n" +
+                "  }\n" +
+                " }\n" +
+                "}";
+        boolean expectedResult=true;
+        boolean actualResult=compare2JSON.verifyEqualJSON(expected,actual);
+        Assertions.assertEquals(actualResult,expectedResult,"Error, los resultados no son lo mismo");
+    }
+
+    //test negativo. Los dos tienen el mismo nested con otro nested pero uno tiene una clave con otra ortografia
+    //cosa que en la comparacion de JSON cuenta como diferencia
+    @Test
+    public void verifyComparer45(){
+        String expected="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":{\n" +
+                "  \"llavein\":3,\n" +
+                "  \"valin\":\"Hola\"\n" +
+                "  }\n" +
+                " }\n" +
+                "}";
+        String actual="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":{\n" +
+                "  \"llavein\":3,\n" +
+                "  \"Valin\":\"Hola\"\n" +
+                "  }\n" +
+                " }\n" +
+                "}";
+        boolean expectedResult=false;
+        boolean actualResult=compare2JSON.verifyEqualJSON(expected,actual);
+        Assertions.assertEquals(actualResult,expectedResult,"Error, los resultados no son lo mismo");
+    }
 }
