@@ -721,4 +721,108 @@ public class CompareTwoJSONSTest {
         boolean actualResult=compare2JSON.verifyEqualJSON(expected,actual);
         Assertions.assertEquals(actualResult,expectedResult,"Error, los resultados no son lo mismo");
     }
+
+    //test negativo. Los dos tienen el mismo nested pero el expected tiene elementos desiguales
+    @Test
+    public void verifyComparer40(){
+        String expected="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":\"5\",\n" +
+                " \"countVal\":2\n" +
+                " }\n" +
+                "}";
+        String actual="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":\"5\"\n" +
+                " }\n" +
+                "}";
+        boolean expectedResult=false;
+        boolean actualResult=compare2JSON.verifyEqualJSON(expected,actual);
+        Assertions.assertEquals(actualResult,expectedResult,"Error, los resultados no son lo mismo");
+    }
+
+    //test negativo. Los dos tienen el mismo nested pero el actual tiene elementos desiguales
+    @Test
+    public void verifyComparer41(){
+        String expected="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":\"5\"\n" +
+                " }\n" +
+                "}";
+        String actual="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":\"5\",\n" +
+                " \"countVal\":2\n" +
+                " }\n" +
+                "}";
+        boolean expectedResult=false;
+        boolean actualResult=compare2JSON.verifyEqualJSON(expected,actual);
+        Assertions.assertEquals(actualResult,expectedResult,"Error, los resultados no son lo mismo");
+    }
+
+    //test negativo. Los dos tienen el mismo nested pero el actual tiene otro nested
+    @Test
+    public void verifyComparer42(){
+        String expected="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":\"5\"\n" +
+                " }\n" +
+                "}";
+        String actual="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":{\n" +
+                "  \"llavein\":3,\n" +
+                "  \"valin\":\"Hola\"\n" +
+                "  }\n" +
+                " }\n" +
+                "}";
+        boolean expectedResult=false;
+        boolean actualResult=compare2JSON.verifyEqualJSON(expected,actual);
+        Assertions.assertEquals(actualResult,expectedResult,"Error, los resultados no son lo mismo");
+    }
+
+    //test negativo. Los dos tienen el mismo nested pero el expected tiene otro nested
+    @Test
+    public void verifyComparer43(){
+        String expected="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":{\n" +
+                "  \"llavein\":3,\n" +
+                "  \"valin\":\"Hola\"\n" +
+                "  }\n" +
+                " }\n" +
+                "}";
+        String actual="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":\"5\"\n" +
+                " }\n" +
+                "}";
+        boolean expectedResult=false;
+        boolean actualResult=compare2JSON.verifyEqualJSON(expected,actual);
+        Assertions.assertEquals(actualResult,expectedResult,"Error, los resultados no son lo mismo");
+    }
 }
