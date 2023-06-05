@@ -4,7 +4,8 @@ Puede conjugar con esta plantilla varias opciones
 {
 "Content":"ExampleFile",
 "Icon":9,
-"date":"$IGNORE",
+"array":[1,2,3,4]
+}
 "elements":{
  "key":2,
  "value":{

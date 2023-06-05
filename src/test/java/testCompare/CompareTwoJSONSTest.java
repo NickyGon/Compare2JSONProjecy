@@ -886,4 +886,29 @@ public class CompareTwoJSONSTest {
         boolean actualResult=compare2JSON.verifyEqualJSON(expected,actual);
         Assertions.assertEquals(actualResult,expectedResult,"Error, los resultados no son lo mismo");
     }
+
+    // test negativo los dos con nested e iguales en keys pero values distintos
+    @Test
+    public void verifyComparer46(){
+        String expected="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":2,\n" +
+                " \"value\":\"5\"\n" +
+                " }\n" +
+                "}";
+        String actual="{\n" +
+                "\"Content\":\"ExampleFile\",\n" +
+                "\"Icon\":9,\n" +
+                "\"elements\":{\n" +
+                " \"key\":1,\n" +
+                " \"value\":\"6\"\n" +
+                " }\n" +
+                "}";
+        boolean expectedResult=false;
+        boolean actualResult=compare2JSON.verifyEqualJSON(expected,actual);
+        Assertions.assertEquals(actualResult,expectedResult,"Error, los resultados no son lo mismo");
+    }
+
 }

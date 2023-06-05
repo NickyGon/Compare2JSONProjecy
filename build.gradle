@@ -22,7 +22,10 @@ dependencies {
     // json
     implementation 'org.json:json:20230227'
     //jackson databind
+
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    //guava
+    implementation("com.google.guava:guava:32.0.0-jre")
 }
 
 test {
